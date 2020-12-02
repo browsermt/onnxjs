@@ -4,6 +4,7 @@
 #pragma once
 
 #include <vector>
+#include <stdint.h>
 
 namespace ShapeUtils {
 size_t size_from_dims(const std::vector<int32_t> &dims);
