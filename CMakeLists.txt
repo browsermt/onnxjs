@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Custom CMake options
 # This option enables/disables the sgemm() routine in the library.
 # If it is off then library provides only matrix multplication routine.
-option(ONNXJS_SGEMM "Enable/disable sgemm routine support in ONNXJS" OFF)
+option(ONNXJS_SGEMM "Enable/disable sgemm routine support in ONNXJS" ON)
 
 add_subdirectory(src)
 if(ONNXJS_SGEMM)
