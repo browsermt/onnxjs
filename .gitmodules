@@ -6,6 +6,3 @@
 	path = deps/eigen
 	url = https://github.com/eigenteam/eigen-git-mirror.git
 	ignore = dirty
-[submodule "deps/eigen-new"]
-	path = deps/eigen-new
-	url = https://gitlab.com/libeigen/eigen
