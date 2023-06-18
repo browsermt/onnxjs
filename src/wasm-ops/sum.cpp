@@ -15,8 +15,8 @@ void sum_f32(void *data) {
 
 // Core operator implementation
 void sum_f32_imp(int num_tensors, int size, float *Y, float *X) {
-  for (size_t i = 0; i < num_tensors; ++i) {
-    for (size_t j = 0; j < size; ++j)
+  for (std::size_t i = 0; i < num_tensors; ++i) {
+    for (std::size_t j = 0; j < size; ++j)
       Y[j] += X[i * size + j];
   }
 }

@@ -16,26 +16,26 @@ void softmax_f32(void *data) {
 
 // Core operator implementation
 void softmax_f32_imp(float *X, float *Y, int32_t N, int32_t D) {
-  for (size_t i = 0; i < N; i++) {
+  for (std::size_t i = 0; i < N; i++) {
     // find row offset
     int offset = i * D;
 
     // find max of each logical row
     float max = std::numeric_limits<float>::lowest();
-    for (size_t j = 0; j < D; j++) {
+    for (std::size_t j = 0; j < D; j++) {
       if (X[offset + j] > max)
         max = X[offset + j];
     }
 
     // find normalization scale per row
     float scale = 0;
-    for (size_t j = 0; j < D; j++) {
+    for (std::size_t j = 0; j < D; j++) {
       Y[offset + j] = exp(X[offset + j] - max);
       scale += Y[offset + j];
     }
 
     // perform the softmax normalization
-    for (size_t j = 0; j < D; j++) {
+    for (std::size_t j = 0; j < D; j++) {
       // If scale is 0, then all elements in that row are 0, so no normalization
       // operation required
       if (scale != 0)

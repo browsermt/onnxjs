@@ -10,10 +10,10 @@ static_assert(sizeof(int) == sizeof(int32_t),
               "'int' and 'int32_t' should be the same type");
 
 #define PARAM_VALUE(data, offset, type)                                        \
-  (*((type *)((((uint8_t *)(data)) + ((size_t)(offset))))))
+  (*((type *)((((uint8_t *)(data)) + ((std::size_t)(offset))))))
 #define PARAM_PTR(data, offset, type)                                          \
   ((type *)((offset == 0) ? nullptr                                            \
-                          : (((uint8_t *)(data)) + ((size_t)(offset)))))
+                          : (((uint8_t *)(data)) + ((std::size_t)(offset)))))
 
 #define PARAM_BOOL(data, offset) (!!PARAM_VALUE(data, offset, uint8_t))
 #define PARAM_INT32(data, offset) PARAM_VALUE(data, offset, int32_t)

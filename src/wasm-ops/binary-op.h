@@ -74,7 +74,7 @@ void binary_imp(void *data, const T *input_1, const T *input_2, T *output) {
   std::vector<int32_t> broadcasted_indices(output_strides.size());
 
   // core functionality (with broadcasting)
-  for (size_t i = 0; i < output_length; ++i) {
+  for (std::size_t i = 0; i < output_length; ++i) {
     ShapeUtils::offset_to_indices(output_strides, i, broadcasted_indices);
     BroadcastUtils::broadcasted_to_original_indices(broadcasted_indices,
                                                     dims1_vector, indices_1);

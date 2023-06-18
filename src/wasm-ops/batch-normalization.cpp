@@ -22,8 +22,8 @@ void batch_normalization_f32_imp(float *X, float *Y, int32_t batch_size,
                                  int32_t num_channels, int32_t channel_size,
                                  float *scale, float *bias, float *mean,
                                  float *variance, float epsilon) {
-  for (size_t nc = 0; nc < batch_size * num_channels; ++nc) {
-    for (size_t i = 0; i < channel_size; ++i) {
+  for (std::size_t nc = 0; nc < batch_size * num_channels; ++nc) {
+    for (std::size_t i = 0; i < channel_size; ++i) {
       Y[nc * channel_size + i] =
           scale[nc % num_channels] *
               ((X[nc * channel_size + i] - mean[nc % num_channels]) /

@@ -24,7 +24,7 @@ void BroadcastUtils::broadcasted_to_original_indices(
     return;
   }
   auto offset = broadcasted_indices.size() - dims.size();
-  for (size_t i = 0; i < rank; ++i) {
+  for (std::size_t i = 0; i < rank; ++i) {
     original_indices[i] = broadcasted_indices[offset + i] % dims[i];
   }
 }

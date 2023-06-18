@@ -4,7 +4,7 @@
 #include "shape_utils.h"
 #include <math.h>
 
-size_t ShapeUtils::size_from_dims(const std::vector<int32_t> &dims) {
+std::size_t ShapeUtils::size_from_dims(const std::vector<int32_t> &dims) {
   auto rank = dims.size();
   if (rank == 0) {
     return 1;
@@ -12,7 +12,7 @@ size_t ShapeUtils::size_from_dims(const std::vector<int32_t> &dims) {
   if (rank == 1) {
     return dims[0];
   }
-  size_t size = 1;
+  std::size_t size = 1;
   for (auto &e : dims) {
     size *= e;
   }
@@ -45,10 +45,10 @@ void ShapeUtils::compute_strides(const std::vector<int32_t> &dims,
   }
 }
 
-size_t ShapeUtils::indices_to_offset(const std::vector<int32_t> &strides,
+std::size_t ShapeUtils::indices_to_offset(const std::vector<int32_t> &strides,
                                      const std::vector<int32_t> &indices) {
-  size_t offset = 0;
-  for (size_t i = 0; i < indices.size(); ++i) {
+  std::size_t offset = 0;
+  for (std::size_t i = 0; i < indices.size(); ++i) {
     offset += strides[i] * indices[i];
   }
   return offset;
@@ -56,7 +56,7 @@ size_t ShapeUtils::indices_to_offset(const std::vector<int32_t> &strides,
 
 std::vector<int32_t>
 ShapeUtils::offset_to_indices(const std::vector<int32_t> &strides,
-                              size_t offset) {
+                              std::size_t offset) {
   auto rank = strides.size();
   if (rank == 0) {
     return std::vector<int32_t>();
@@ -70,7 +70,7 @@ ShapeUtils::offset_to_indices(const std::vector<int32_t> &strides,
 }
 
 void ShapeUtils::offset_to_indices(const std::vector<int32_t> &strides,
-                                   size_t offset,
+                                   std::size_t offset,
                                    std::vector<int32_t> &indices) {
   auto rank = strides.size();
   if (rank == 0) {
@@ -80,7 +80,7 @@ void ShapeUtils::offset_to_indices(const std::vector<int32_t> &strides,
     indices[0] = offset * strides[0];
     return;
   }
-  for (size_t i = 0; i < indices.size() - 1; ++i) {
+  for (std::size_t i = 0; i < indices.size() - 1; ++i) {
     indices[i] = floor(offset / strides[i]);
     offset -= indices[i] * strides[i];
   }

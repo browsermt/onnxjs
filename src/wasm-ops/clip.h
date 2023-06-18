@@ -14,7 +14,7 @@ void clip_f32(void *);
 template <typename T>
 void clip_imp(const T *input, T *output, const int32_t length, const float min,
               const float max) {
-  for (size_t i = 0; i < length; ++i) {
+  for (std::size_t i = 0; i < length; ++i) {
     const auto &val = input[i];
     output[i] = (val < min) ? min : (val > max) ? max : val;
   }
